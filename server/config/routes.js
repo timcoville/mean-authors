@@ -7,7 +7,7 @@ module.exports = function(app) {
     app.get('/api/authors/:id', controller.singleAuthor);
     app.put('/api/authors/:id', controller.updateAuthor);
     app.delete('/api/authors/:id', controller.deleteAuthor);
-/*     app.all("*", (req,res,next) => {
+    app.all("*", (req,res,next)=>{
         res.sendFile(path.resolve("./public/dist/public/index.html"));
-      }); */
-}
+      });
+};

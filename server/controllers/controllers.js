@@ -36,12 +36,13 @@ module.exports = {
         });
     },
     updateAuthor: (req, res)=>{
-        Author.findOne({_id: req.params.id}, (err, data)=>{
+        Author.findOne({_id: req.params.id}, (err, record)=>{
             if(err){
                 res.json(err);
             }
             else{
-                Author.update(data, {name: req.body.name}, (err, data)=>{
+                record.set({name: req.body.name});
+                record.save( (err, data)=>{
                     if(err){
                         res.json(err);
                     }
@@ -53,12 +54,12 @@ module.exports = {
         });
     },
     deleteAuthor: (req, res)=>{
-        Author.findOne({_id: req.params.id}, (err, data)=>{
+        Author.findOne({_id: req.params.id}, (err, record)=>{
             if(err){
                 res.json(err);
             }
             else{
-                data.remove();
+                record.remove();
                 res.json({'Success': 'Author Deleted'});
             } 
         });
