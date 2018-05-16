@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -9,7 +10,7 @@ import { HttpService } from './../http.service';
 export class CreateComponent implements OnInit {
   author: any;
   errors: any;
-  constructor(private _httpService: HttpService) { }
+  constructor(private _httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
     this.author = {
@@ -29,7 +30,7 @@ export class CreateComponent implements OnInit {
           this.errors.pop()
           console.log(this.errors)
           console.log(data);
-          window.location.href = "/"
+          return this.router.navigate([''])
         }
       })
   }
