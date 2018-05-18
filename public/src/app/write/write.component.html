@@ -1,0 +1,15 @@
+<div id="wrapper">
+    <button [routerLink]="['/home']">Return Home</button>
+    <h4>Add Quote for this Author</h4>
+    <form (submit)="addQuote()">
+      Quote: <input type="text" name="quote.quote" [(ngModel)]="quote.quote">
+      <input type="submit">
+    </form>
+  
+    <p *ngIf="error.length > 0">
+    {{error}}
+    </p>
+  
+  
+  </div>
+  

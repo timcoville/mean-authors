@@ -63,5 +63,58 @@ module.exports = {
                 res.json({'Success': 'Author Deleted'});
             } 
         });
-    } 
+    },
+    createQuote: (req, res)=>{
+        console.log(req.params.id)
+        console.log(req.body)
+        Author.findOne({_id: req.params.id}, (err, record)=>{
+            if(err){
+
+                res.json(err);
+            }
+            else{
+                record.quotes.push({quote: req.body.quote});
+                record.save((err)=>{
+                    if(!err){
+                        res.json(record);
+                    }
+                    else{
+                        res.json(err)
+                    }
+                });
+            } 
+        });
+    },
+    deleteQuote: (req, res)=> {
+       console.log(req.params.id)
+       console.log(req.params.quid)
+       Author.findOne({_id: req.params.id}, (err, record)=>{
+        if(!err){
+            record.quotes.id(req.params.quid).remove();
+            record.save((err)=>{
+                if(!err){
+                    res.json({"success": "Quote Deleted but not saved"})
+                }
+                else{
+                    res.json(err)
+                }
+            })
+            
+            }
+        else{
+            res.json(err)
+        }
+        });
+    }
 };
+
+/*         Author.findOne({_id: req.params.id}, (err, record)=>{
+            if(err){
+                res.json(err);
+            }
+            else{
+                record.quotes.push({quote: req.body.quote});
+                record.save();
+                res.json(record);
+            } 
+        });*/

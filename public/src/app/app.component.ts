@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   
-  constructor(private _httpService: HttpService, private router: Router){
-    router.navigate([''])
+  constructor(private _httpService: HttpService){
+
   }
   
   ngOnInit() {

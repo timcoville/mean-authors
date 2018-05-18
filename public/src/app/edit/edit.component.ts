@@ -54,11 +54,8 @@ export class EditComponent implements OnInit {
           console.log(this.errors)
           console.log(data);
           return this.router.navigate([''])
-          /* window.location.href = "/" */
+        
         }
       })
   }
-
-  
-
 }

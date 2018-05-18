@@ -29,4 +29,16 @@ export class HttpService {
     return this._http.delete('/api/authors/'+id)
   }
 
+  serviceCreateQuote(id, quote){
+    return this._http.post('/api/quotes/'+id, quote)
+  }
+
+  serviceDeleteQuote(id, quote_id){
+    console.log(id, quote_id)
+    console.log('/api/quotes/'+id+'/'+quote_id)
+    return this._http.delete('/api/quotes/'+id+'/'+quote_id)
+  }
+
 }
+
+
